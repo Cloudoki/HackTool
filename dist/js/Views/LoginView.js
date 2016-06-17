@@ -4,10 +4,7 @@ define(['Views/BaseView'], function(BaseView){
 
 		initialize: function(){
 
-			if( window.localStorage.getItem('code') ){
-				Hacktool.Router.navigate('home', true);
-				return;
-			}
+			
 
 		},
 

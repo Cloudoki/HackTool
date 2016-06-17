@@ -13,7 +13,9 @@ define(['Views/home', 'Views/LoginView'],function (Home, Login){
 		    	Hacktool.RootView.setView(view);
 		    },
 
+
 		    login: function(){
+
 		    	var view = new Login();
 		    	Hacktool.RootView.setView(view);
 		    }

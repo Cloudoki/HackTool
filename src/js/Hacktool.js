@@ -1,7 +1,7 @@
 
 define(
-	['Router','Views/RootView', 'Views/home', 'Views/LoginView'],
-	function (Router, RootView, Home, LoginView)
+	['Router','Views/RootView'],
+	function (Router, RootView)
 	{
 		var Hacktool = {
 
@@ -10,7 +10,7 @@ define(
 			init : function ()
 			{
 
-				this.code = window.localStorage.getItem('code');
+				Hacktool.code = window.localStorage.getItem('code');
 
 				this.start();
 
@@ -25,23 +25,17 @@ define(
 				// Root view
 				Hacktool.RootView = new RootView();
 
-				if (!this.code){
+				if ( !Hacktool.code )
+					window.location.href="/#login";
 
-					view = new LoginView();
-					Hacktool.RootView.setView(view);
 
-				} else {
-					view = new Home();
-					Hacktool.RootView.setView(view);
+				Hacktool.RootView.renderNav();
+				Hacktool.RootView.renderFooter();
 
-					Hacktool.RootView.renderNav();
-					Hacktool.RootView.renderFooter();
 
-					// Router
-					Hacktool.Router = new Router ();
-					Backbone.history.start();
-				}
-
+				// Router
+				Hacktool.Router = new Router ();
+				Backbone.history.start();
 
 			},
 

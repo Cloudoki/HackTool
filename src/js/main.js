@@ -69,24 +69,24 @@ require.config({
     backgrid_paginator: pathname+'vendor/backgrid-paginator/backgrid-paginator',
     google: 'https://apis.google.com/js/client.js?onload=define',
     moment: pathname+'vendor/moment/min/moment.min',
-    moovly: pathname+'js/Moovly'
+    hacktool: pathname+'js/Hacktool'
   },
   
   urlArgs: "bust=" +  (new Date()).getTime()
 });
 
 
-var Moovly;
+var Hacktool;
 
 require(
-  ['backbone', 'moovly', 'bootstrap'],
-  function(Backbone, moovly, Bootstrap)
+  ['backbone', 'hacktool', 'bootstrap'],
+  function(Backbone, hacktool, Bootstrap)
   {
     $(document).ready(function()
     {     
 
-      Moovly = moovly;
-      Moovly.init();
+      Hacktool = hacktool;
+      Hacktool.init();
     });
   }
 );

@@ -43,7 +43,8 @@ define(
 				var user = null,
 					userid = null;
 
-				$('header').html(Mustache.render(Templates.topnav, {logged: user? true: false, user: user, userid: userid, group: group, is_admin: is_group_admin}));
+				//$('header').html(Mustache.render(Templates.topnav, {logged: user? true: false, user: user, userid: userid, group: group, is_admin: is_group_admin}));
+				$('header').html(Mustache.render(Templates.topnav, {}));
 			},
 
 			renderFooter: function() {

@@ -11,11 +11,12 @@ define(
 
 			initialize: function(options) {
 
-				
+				console.log('home');
 			},
 
 		    render: function() {	
 		    	
+		    	this.$el.html( Mustache.render( Templates.home, {} ) );
        
 		        return this;
 		    },

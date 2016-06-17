@@ -32,6 +32,7 @@ define(
 
 			setView : function (view)
 			{
+
 				this.view = view;
 				this.render ();
 

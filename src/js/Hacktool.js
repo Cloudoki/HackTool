@@ -1,7 +1,7 @@
 
 define(
-	['Router','Views/RootView'],
-	function (Router, RootView)
+	['Router','Views/RootView', 'Views/home', 'Views/LoginView'],
+	function (Router, RootView, Home, LoginView)
 	{
 		var Hacktool = {
 
@@ -10,13 +10,9 @@ define(
 			init : function ()
 			{
 
-				var code = window.localStorage.getItem('code');
-				console.log( code );
-				if ( code ){
-					this.start();
-				} else {
-					this.redirect();
-				}
+				this.code = window.localStorage.getItem('code');
+
+				this.start();
 
 				return this;
 			},
@@ -28,12 +24,24 @@ define(
 
 				// Root view
 				Hacktool.RootView = new RootView();
-				Hacktool.RootView.renderNav();
-				Hacktool.RootView.renderFooter();
-				// Router
-				Hacktool.Router = new Router ();
 
-				Backbone.history.start();
+				if (!this.code){
+
+					view = new LoginView();
+					Hacktool.RootView.setView(view);
+
+				} else {
+					view = new Home();
+					Hacktool.RootView.setView(view);
+
+					Hacktool.RootView.renderNav();
+					Hacktool.RootView.renderFooter();
+
+					// Router
+					Hacktool.Router = new Router ();
+					Backbone.history.start();
+				}
+
 
 			},
 
@@ -41,7 +49,6 @@ define(
 			// before logging in OR on password change restriction
 			redirect: function() {
 
-				Hacktool.Router.navigate('#profile/account', true);
 
 				/*if (Hacktool.Session.User) {
 					pwdexpired = Hacktool.Session.User.attributes.user.password_expired;
